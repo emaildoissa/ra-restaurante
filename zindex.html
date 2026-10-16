@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio RA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body class="bg-zinc-900 text-white min-h-screen p-4 flex flex-col items-center">
+
+  <div class="w-full max-w-md">
+    <h1 class="text-2xl font-bold text-orange-500 text-center">Cardápio 3D / RA</h1>
+    <p class="text-zinc-400 text-sm text-center mb-4">Gire o prato ou clique no botão laranja pelo celular</p>
+
+    <!-- Visor 3D -->
+    <div class="bg-zinc-800 rounded-2xl overflow-hidden border border-zinc-700 relative">
+      <model-viewer
+        id="visor"
+        src="https://modelviewer.dev/shared-assets/models/shishkebab.glb"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        camera-controls
+        auto-rotate
+        shadow-intensity="1"
+        style="width: 100%; height: 400px;">
+        
+        <button slot="ar-button" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white font-bold py-3 px-6 rounded-full shadow-lg whitespace-nowrap">
+          📱 Ver na Minha Mesa (RA)
+        </button>
+      </model-viewer>
+    </div>
+
+    <!-- Botões para alternar entre o modelo de teste e o seu arquivo local -->
+    <div class="grid grid-cols-2 gap-2 mt-4">
+      <button onclick="document.getElementById('visor').src='https://modelviewer.dev/shared-assets/models/shishkebab.glb'" class="bg-zinc-800 border border-orange-500 p-3 rounded-xl text-sm font-bold">
+        🍢 Prato Online (Teste)
+      </button>
+      <button onclick="document.getElementById('visor').src='./hamburguer.glb'" class="bg-zinc-800 border border-zinc-700 p-3 rounded-xl text-sm font-bold">
+        🍔 Meu hamburguer.glb
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>
